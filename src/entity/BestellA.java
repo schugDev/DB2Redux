@@ -6,96 +6,107 @@
 package entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
  * @author zeroth
  */
 public class BestellA {
-    private int  posNr;
-    private int artNr;
-    private String artBez;
-    private double artPreis;
-    private String artKuehl;
-    private String artMge;
-    private String artAnzBo;
-    private Date artEdat;
+    private int bstNr;
+    private int kNr;
+    private int status;
+    private double rsum;
+    private Date bestDat;
+    private Date liefDat;
+    private Date rechDat;
+    public ArrayList<Artikel> artListe = new ArrayList<>();
 
-    public BestellA(int posNr, int artNr, String artBez, double artPreis, String artKuehl, String artMge, String artAnzBo, Date artEdat) {
-        this.posNr = posNr;
-        this.artNr = artNr;
-        this.artBez = artBez;
-        this.artPreis = artPreis;
-        this.artKuehl = artKuehl;
-        this.artMge = artMge;
-        this.artAnzBo = artAnzBo;
-        this.artEdat = artEdat;
+    public BestellA() {
     }
 
-    public int getPosNr() {
-        return posNr;
+    public BestellA(int bstNr, int kNr, int status, double rsum, Date bestDat, Date liefDat, Date rechDat) {
+        this.bstNr = bstNr;
+        this.kNr = kNr;
+        this.status = status;
+        this.rsum = rsum;
+        this.bestDat = bestDat;
+        this.liefDat = liefDat;
+        this.rechDat = rechDat;
     }
 
-    public void setPosNr(int posNr) {
-        this.posNr = posNr;
+    public int getBstNr() {
+        return bstNr;
     }
 
-    public int getArtNr() {
-        return artNr;
+    public void setBstNr(int bstNr) {
+        this.bstNr = bstNr;
     }
 
-    public void setArtNr(int artNr) {
-        this.artNr = artNr;
+    public int getkNr() {
+        return kNr;
     }
 
-    public String getArtBez() {
-        return artBez;
+    public void setkNr(int kNr) {
+        this.kNr = kNr;
     }
 
-    public void setArtBez(String artBez) {
-        this.artBez = artBez;
+    public int getStatus() {
+        return status;
     }
 
-    public double getArtPreis() {
-        return artPreis;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public void setArtPreis(double artPreis) {
-        this.artPreis = artPreis;
+    public double getRsum() {
+        return rsum;
     }
 
-    public String getArtKuehl() {
-        return artKuehl;
+    public void setRsum(double rsum) {
+        this.rsum = rsum;
     }
 
-    public void setArtKuehl(String artKuehl) {
-        this.artKuehl = artKuehl;
+    public Date getBestDat() {
+        return bestDat;
     }
 
-    public String getArtMge() {
-        return artMge;
+    public void setBestDat(Date bestDat) {
+        this.bestDat = bestDat;
     }
 
-    public void setArtMge(String artMge) {
-        this.artMge = artMge;
+    public Date getLiefDat() {
+        return liefDat;
     }
 
-    public String getArtAnzBo() {
-        return artAnzBo;
+    public void setLiefDat(Date liefDat) {
+        this.liefDat = liefDat;
     }
 
-    public void setArtAnzBo(String artAnzBo) {
-        this.artAnzBo = artAnzBo;
+    public Date getRechDat() {
+        return rechDat;
     }
 
-    public Date getArtEdat() {
-        return artEdat;
+    public void setRechDat(Date rechDat) {
+        this.rechDat = rechDat;
     }
 
-    public void setArtEdat(Date artEdat) {
-        this.artEdat = artEdat;
+    public ArrayList<Artikel> getArtListe() {
+        return artListe;
+    }
+
+    public void setArtListe(ArrayList<Artikel> artListe) {
+        this.artListe = artListe;
     }
     
+    public void printList(){
+        for(Artikel a: artListe){
+            System.out.println(a.getArtNr() + " " + a.getArtBez() );
+        }
+    }
+
+
     
+   
     
 }

@@ -5,9 +5,11 @@
  */
 package main;
 
+import database.DatabaseConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import parser.MySAXParser;
@@ -39,6 +41,7 @@ public class Praktikum {
             System.out.println("\nPraktikum 2");
             System.out.println("3. Validiere ARTIKEL1.xml gegen XML Schema INSERT in DB");
             System.out.println("4. Generiere INSERTS auf Nested Table");
+            System.out.println("5. Zeige Inhalt der artListe an (Nested Table)");
             try {
                 input = Integer.parseInt(in.readLine());
             } catch (IOException ex) {
@@ -65,6 +68,17 @@ public class Praktikum {
                     xmlFile = "BESTELLAT.xml";
                     xsdFile = "BESTELLAT.xsd";
                     MySAXParser.parseXMLFileArtikelSchemaNested(xmlFile, xsdFile, true);
+                    break;
+                case 5:
+                    DatabaseConnection db = new DatabaseConnection();
+            {
+                try {
+                    db.selectAllFromNestedTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Praktikum.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
                 case 0: 
                 default:
             }

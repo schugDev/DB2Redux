@@ -5,14 +5,18 @@
  */
 package database;
 
+import entity.Artikel;
+import entity.BestellA;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -135,6 +139,82 @@ public class DatabaseConnection {
         
         preparedStatement.executeUpdate();
         preparedStatement.close();
+    }
+    //Propably the ugliest code I ever wrote.
+    public void insertIntoNestedTable(BestellA b) throws SQLException{
+        Connection con = connect();
+        Statement stmt = con.createStatement();
+        
+        //Create first part of sql insert
+        String sql = "INSERT INTO BESTELLAT VALUES (";
+        sql += ""+ b.getBstNr()+ ",";
+        sql += ""+ b.getkNr()+ ",";
+        sql += ""+ b.getStatus()+ ",";
+        sql += ""+ b.getRsum()+ ",";
+        sql += "TO_DATE('"+ b.getBestDat()+ "','yyyy.mm.dd '),";
+        sql += "TO_DATE('"+ b.getLiefDat()+ "','yyyy.mm.dd '),";
+        sql += "TO_DATE('"+ b.getRechDat()+ "','yyyy.mm.dd ')";
+        if(b.getArtListe().size()>0){
+            sql += ", BESTA(";
+        }
+        
+        
+        //extract information for the nested table
+        ArrayList<Artikel> alist = b.getArtListe();
+        for(Artikel a: alist){
+            sql += "bestellung_typ("+a.getPosNr()+",";
+            sql += "" + a.getArtNr() + ",";
+            sql += "'" + a.getArtBez()+ "',";
+            sql += "" + a.getArtPreis()+ ",";
+            sql += "'" + a.getArtKuehl()+ "',";
+            sql += "'" + a.getArtMge()+ "',";
+            sql += "'" + a.getArtAnzBo()+ "',";
+            sql += "TO_DATE('" + a.getArtEdat()+ "','yyyy.mm.dd'))";
+            if(alist.indexOf(a) != alist.size()-1){
+                sql += ",";
+            }
+            
+        }
+        
+        sql += "))";
+        stmt.execute(sql);
+        
+        
+    }
+    
+    public void selectAllFromNestedTable() throws SQLException{
+        /*
+        SELECT B.* FROM BESTELLAT A,
+	TABLE (A.ARTLISTE) B;
+        */
+        
+        Connection con = connect();
+        PreparedStatement stmt;
+        ResultSet resultSet;
+        String SQL = "SELECT B.* FROM BESTELLAT A, TABLE (A.ARTLISTE) B";
+
+
+        stmt = con.prepareStatement(SQL);
+        resultSet = stmt.executeQuery();
+        System.out.println("ARTLISTE");
+        System.out.println("----------------");
+        String r = new String();
+        while (resultSet.next()) {
+            r = "";
+            r += " "+resultSet.getInt("POSNR");
+            r += " "+resultSet.getInt("ARTNR");
+            r += " "+resultSet.getString("ARTBEZ");
+            r += " "+resultSet.getDouble("PREIS");
+            r += " "+resultSet.getString("KUEHL");
+            r += " "+resultSet.getString("MGE");
+            r += " "+resultSet.getString("ANZBO");
+            r += " "+resultSet.getString("EDAT");
+            System.out.println("---------------------------------------------------------");
+            System.out.println(r);        
+        }
+        
+        
+        
     }
     
 }
