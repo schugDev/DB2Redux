@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TBLARTIKEL
+        xmlns="https://www.w3schools.com"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www.w3schools.com ARTIKEL1.xsd">
+    <ARTIKEL>
+        <ARTNR>12345</ARTNR>
+        <ARTBEZ>Telefon</ARTBEZ>
+        <PREIS>99.99</PREIS>
+        <KUEHL>NK</KUEHL>
+        <MGE>Karton</MGE>
+        <ANZBO>25</ANZBO>
+        <EDAT>30.03.2019</EDAT>
+    </ARTIKEL>
+    
+
+</TBLARTIKEL>
