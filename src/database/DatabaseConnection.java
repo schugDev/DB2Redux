@@ -80,9 +80,16 @@ public class DatabaseConnection {
         
 
         System.out.println("----------------------------------");
+        System.out.println(kDtUsp + " " + kUwert);
         System.out.println("Vor UPDATE");
         selectKundePrak1(Integer.parseInt(kNr));
-        sql = "UPDATE TBLKUNDE SET " + kUsp + "='" + kUwert + "' WHERE KNR=" + kNr;
+        if(kDtUsp.equals("decimal")){
+            sql = "UPDATE TBLKUNDE SET " + kUsp + "=" + Double.parseDouble(kUwert) + " WHERE KNR=" + kNr;
+        }else{
+            sql = "UPDATE TBLKUNDE SET " + kUsp + "='" + kUwert + "' WHERE KNR=" + kNr;
+
+        }
+        System.out.println(sql);
         preparedStatement = con.prepareStatement(sql);
         preparedStatement.executeUpdate();
         preparedStatement.close();

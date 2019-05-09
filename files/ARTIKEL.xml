@@ -1,9 +1,47 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE TBLARTIKEL SYSTEM "ARTIKEL.dtd">
 
-  <TBLARTIKEL>   <ARTIKEL>
+  <TBLARTIKEL>
+      <ARTIKEL>
         <ARTNR DT="int">0</ARTNR>
-        <ARTBEZ DT="char(30)">Schraubendreher</ARTBEZ>
+        <ARTBEZ DT="char(30)">Schraubendreher1</ARTBEZ>
+        <PREIS DT="decimal(7,2)">4.99</PREIS>
+        <KUEHL DT="char(2)">NK</KUEHL>
+        <MGE DT="char(30)">1 Mge</MGE>
+        <ANZBO DT="char(30)">13</ANZBO>
+        <EDAT DT="date">20.05.2019</EDAT>
+    </ARTIKEL>
+      <ARTIKEL>
+        <ARTNR DT="int">0</ARTNR>
+        <ARTBEZ DT="char(30)">Schraubendreher1</ARTBEZ>
+        <PREIS DT="decimal(7,2)">4.99</PREIS>
+        <KUEHL DT="char(2)">NK</KUEHL>
+        <MGE DT="char(30)">1 Mge</MGE>
+        <ANZBO DT="char(30)">13</ANZBO>
+        <EDAT DT="date">20.05.2019</EDAT>
+    </ARTIKEL>
+    <ARTIKEL>
+        <ARTNR DT="int">0</ARTNR>
+        <ARTBEZ DT="char(30)">Schraubendreher2</ARTBEZ>
+        <PREIS DT="decimal(7,2)">4.99</PREIS>
+        <KUEHL DT="char(2)">NK</KUEHL>
+        <MGE DT="char(30)">1 Mge</MGE>
+        <ANZBO DT="char(30)">13</ANZBO>
+        <EDAT DT="date">20.05.2019</EDAT>
+    </ARTIKEL>
+     <ARTIKEL>
+        <ARTNR DT="int">0</ARTNR>
+        <ARTBEZ DT="char(30)">Schraubendreher3</ARTBEZ>
+        <PREIS DT="decimal(7,2)">4.99</PREIS>
+        <ggf>xxx</ggf>
+        <KUEHL DT="char(2)">NK</KUEHL>
+        <MGE DT="char(30)">1 Mge</MGE>
+        <ANZBO DT="char(30)">13</ANZBO>
+        <EDAT DT="date">20.05.2019</EDAT>
+    </ARTIKEL>
+     <ARTIKEL>
+        <ARTNR DT="int">0</ARTNR>
+        <ARTBEZ DT="char(30)">Schraubendreher4</ARTBEZ>
         <PREIS DT="decimal(7,2)">4.99</PREIS>
         <KUEHL DT="char(2)">NK</KUEHL>
         <MGE DT="char(30)">1 Mge</MGE>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE UPDATEKUNDE SYSTEM "UKUNDE.dtd">
 <UPDATEKUNDE>
-    <UPKUNDE KNR="1" USP="KKLIMIT" DTUSP="decimal" UWERT="10.0"/>
-    <UPKUNDE KNR="3" USP="KKLIMIT" DTUSP="decimal" UWERT="100.0"/>
-    <UPKUNDE KNR="5" USP="KKLIMIT" DTUSP="decimal" UWERT="120.0"/>
-    <UPKUNDE KNR="7" USP="KKLIMIT" DTUSP="decimal" UWERT="40.0"/>
-    <UPKUNDE KNR="9" USP="KKLIMIT" DTUSP="decimal" UWERT="1054.0"/>
-    <UPKUNDE KNR="1455" USP="KKLIMIT" DTUSP="decimal" UWERT="0.0"/>
+    <UPKUNDE KNR="2" USP="KKLIMIT" DTUSP="decimal" UWERT="210.0"/>
+    <UPKUNDE KNR="4" USP="ORT" DTUSP="char(30)" UWERT="Koeln-Deutz"/>
+    <UPKUNDE KNR="3" USP="KNAME" DTUSP="char(30)" UWERT="Karl"/>
+    <UPKUNDE KNR="7" USP="STRASSE" DTUSP="char(30)" UWERT="Antalyastr. 132"/>
+    <UPKUNDE KNR="1" USP="KKLIMIT" DTUSP="decimal" UWERT="420.0"/>
+    <UPKUNDE KNR="9" USP="KKLIMIT" DTUSP="decimal" UWERT="302.0"/>
 </UPDATEKUNDE>
