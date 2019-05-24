@@ -7,6 +7,7 @@ package database;
 
 import entity.Artikel;
 import entity.BestellA;
+import entity.Bpos;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -195,6 +196,8 @@ public class DatabaseConnection {
 	TABLE (A.ARTLISTE) B;
         */
         
+        
+        
         Connection con = connect();
         PreparedStatement stmt;
         ResultSet resultSet;
@@ -216,9 +219,68 @@ public class DatabaseConnection {
             r += " "+resultSet.getString("MGE");
             r += " "+resultSet.getString("ANZBO");
             r += " "+resultSet.getString("EDAT");
+            
+            
             System.out.println("---------------------------------------------------------");
             System.out.println(r);        
         }
+        
+        
+        
+    }
+
+    public ArrayList<Bpos> getBestNrAndMengeByArtNr(int artNr) throws SQLException{
+        Connection con = connect();
+        ArrayList<Bpos> bposList = new ArrayList<>();
+        PreparedStatement stmt1;
+        ResultSet resultSet1;
+        String SQLBpos = "SELECT BSTNR, MENGE FROM TBLBPOS WHERE ARTNR = " + artNr;
+        stmt1 = con.prepareStatement(SQLBpos);
+        
+        resultSet1 = stmt1.executeQuery();
+        
+        while (resultSet1.next()) {
+            Bpos tmp = new Bpos();
+            tmp.setBestNr(resultSet1.getInt("BSTNR"));
+            tmp.setMenge(resultSet1.getInt("MENGE"));
+            
+            
+            bposList.add(tmp);
+        }
+        
+        
+        return bposList;
+    }
+    
+    public ArrayList<Artikel> selectAllArtikel() throws SQLException {
+        
+        ArrayList<Artikel> artikelListe = new ArrayList<>();
+        Connection con = connect();
+        PreparedStatement stmt1;
+        ResultSet resultSet1;
+        String SQLArt = "SELECT ARTNR, ARTBEZ, MGE, PREIS FROM TBLARTIKEL";
+        String SQLBpos = "SELECT BSTNR, MENGE FROM TBLBPOS";
+        stmt1 = con.prepareStatement(SQLArt);
+        
+        resultSet1 = stmt1.executeQuery();
+        
+        
+        
+        while (resultSet1.next()) {
+            
+            Artikel tmp = new Artikel();
+            tmp.setArtNr(resultSet1.getInt("ARTNR"));
+            tmp.setArtBez(resultSet1.getString("ARTBEZ"));
+            tmp.setArtMge(resultSet1.getString("MGE"));
+            tmp.setArtPreis(resultSet1.getDouble("PREIS"));
+            
+            artikelListe.add(tmp);
+                 
+
+            
+        }
+        
+        return artikelListe;
         
         
         

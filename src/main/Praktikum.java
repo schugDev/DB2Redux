@@ -6,6 +6,7 @@
 package main;
 
 import database.DatabaseConnection;
+import entity.CouchArtikel21;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import parser.MySAXParser;
+import writer.CSVWriter;
 
 /**
  *
@@ -23,7 +25,7 @@ public class Praktikum {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String filename;
         String xmlFile;
@@ -42,6 +44,9 @@ public class Praktikum {
             System.out.println("3. Validiere ARTIKEL1.xml gegen XML Schema INSERT in DB");
             System.out.println("4. Generiere INSERTS auf Nested Table");
             System.out.println("5. Zeige Inhalt der artListe an (Nested Table)");
+            System.out.println("\nPraktikum 3");
+            System.out.println("6. Generiere CSV fuer Artikel");
+            System.out.println("7. CouchDB Funktionen\n\n");
             try {
                 input = Integer.parseInt(in.readLine());
             } catch (IOException ex) {
@@ -71,13 +76,25 @@ public class Praktikum {
                     break;
                 case 5:
                     DatabaseConnection db = new DatabaseConnection();
-            {
+            
                 try {
                     db.selectAllFromNestedTable();
                 } catch (SQLException ex) {
                     Logger.getLogger(Praktikum.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+               }
+                break;
+                case 6: 
+                    CSVWriter wr = new CSVWriter();
+                    wr.writeCsv();
+                    break;
+                    
+                case 7:
+                    CouchArtikel21 couch = new CouchArtikel21();
+                    couch.connect();
+                    couch.showMenu();
+                    break;
+                    
+                
 
                 case 0: 
                 default:
