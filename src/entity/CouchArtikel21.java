@@ -11,8 +11,8 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import org.ektorp.CouchDbConnector;
 import org.ektorp.CouchDbInstance;
 import org.ektorp.ViewQuery;
@@ -48,12 +48,14 @@ public class CouchArtikel21 {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         
         while(sel != 0){
-            System.out.println("1. INSERT aus ARTIKEL.CSV");
-            System.out.println("2. SELECT alle Artikel");
-            System.out.println("3. SELECT einzelnen Artikel");
-            System.out.println("4. UPDATE einzelnen Artikel");
-            System.out.println("5. DELETE einzelnen Artikel");
-            System.out.println("\n 0. Beenden\n\n");
+            System.out.println("|------------------------------|");
+            System.out.println("| 1. INSERT aus ARTIKEL.CSV    |");
+            System.out.println("| 2. SELECT alle Artikel       |");
+            System.out.println("| 3. SELECT einzelnen Artikel  |");
+            System.out.println("| 4. UPDATE einzelnen Artikel  |");
+            System.out.println("| 5. DELETE einzelnen Artikel  |");
+            System.out.println("| 0. Beenden                   |");
+            System.out.println("|------------------------------|");
             sel = Integer.parseInt(in.readLine());
          
             switch(sel){

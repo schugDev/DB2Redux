@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package main;
 
 import database.DatabaseConnection;
@@ -16,15 +12,10 @@ import java.util.logging.Logger;
 import parser.MySAXParser;
 import writer.CSVWriter;
 
-/**
- *
- * @author zeroth
- */
+
 public class Praktikum {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) throws SQLException, IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String filename;
@@ -37,16 +28,20 @@ public class Praktikum {
         
         
         while(input != 0){
-            System.out.println("\n\n\nPraktikum 1");
-            System.out.println("1. ARTIKEL.xml auf Wohlgeformtheit und Validitaet pruefen & INSERT in DB");
-            System.out.println("2. UKUNDE.xml auf Wohlgeformtheit und Validitaet pruefen & UPDATE auf DB");
-            System.out.println("\nPraktikum 2");
-            System.out.println("3. Validiere ARTIKEL1.xml gegen XML Schema INSERT in DB");
-            System.out.println("4. Generiere INSERTS auf Nested Table");
-            System.out.println("5. Zeige Inhalt der artListe an (Nested Table)");
-            System.out.println("\nPraktikum 3");
-            System.out.println("6. Generiere CSV fuer Artikel");
-            System.out.println("7. CouchDB Funktionen\n\n");
+            System.out.println("|------------------------------------------------------------------------------|");
+            System.out.println("|  Praktikum 1                                                                 |");
+            System.out.println("|  1. ARTIKEL.xml auf Wohlgeformtheit und Validitaet pruefen & INSERT in DB    |");
+            System.out.println("|  2. UKUNDE.xml auf Wohlgeformtheit und Validitaet pruefen & UPDATE auf DB    |");
+            System.out.println("|  Praktikum 2                                                                 |");
+            System.out.println("|  3. Validiere ARTIKEL1.xml gegen XML Schema INSERT in DB                     |");
+            System.out.println("|  4. Generiere INSERTS auf Nested Table                                       |");
+            System.out.println("|  5. Zeige Inhalt der artListe an (Nested Table)                              |");
+            System.out.println("|  Praktikum 3                                                                 |");
+            System.out.println("|  6. Generiere CSV fuer Artikel                                               |");
+            System.out.println("|  7. CouchDB Funktionen                                                       |");
+            System.out.println("|                                                                              |");
+            System.out.println("|  0. Beenden                                                                  |");
+            System.out.println("|------------------------------------------------------------------------------|");
             try {
                 input = Integer.parseInt(in.readLine());
             } catch (IOException ex) {

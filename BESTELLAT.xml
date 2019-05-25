@@ -32,5 +32,15 @@
         <ANZBO>1</ANZBO>
         <EDAT>2019.03.29</EDAT>
      </BESTELLUNG_TYP>
+     <BESTELLUNG_TYP>
+        <POSNR>3</POSNR>
+        <ARTNR>3</ARTNR>
+        <ARTBEZ>Tuete</ARTBEZ>
+        <PREIS>0.56</PREIS>
+        <KUEHL>NK</KUEHL>
+        <MGE>Paket</MGE>
+        <ANZBO>3</ANZBO>
+        <EDAT>2019.05.03</EDAT>
+     </BESTELLUNG_TYP>
  </ARTLISTE>
 </BESTELLAT>
