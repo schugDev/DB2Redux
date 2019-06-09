@@ -4,7 +4,31 @@
         xmlns="https://www.w3schools.com"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="https://www.w3schools.com BESTELLAT.xsd">
- <BSTNR>1</BSTNR>
+ <BESTELLUNG>
+ <BSTNR>111</BSTNR>
+ <KNR>1</KNR>
+ <STATUS>1</STATUS>
+ <RSUM>16.98</RSUM>
+ <BESTDAT>2019.04.10</BESTDAT>
+ <LIEFDAT>2019.04.11</LIEFDAT>
+ <RECHDAT>2019.04.12</RECHDAT>
+ <ARTLISTE>
+     <BESTELLUNG_TYP>
+        <POSNR>10</POSNR>
+        <ARTNR>1</ARTNR>
+     </BESTELLUNG_TYP>
+     <BESTELLUNG_TYP>
+        <POSNR>20</POSNR>
+        <ARTNR>2</ARTNR>
+     </BESTELLUNG_TYP>
+     <BESTELLUNG_TYP>
+        <POSNR>30</POSNR>
+        <ARTNR>3</ARTNR>
+     </BESTELLUNG_TYP>
+ </ARTLISTE>
+ </BESTELLUNG>
+ <BESTELLUNG>
+ <BSTNR>40</BSTNR>
  <KNR>1</KNR>
  <STATUS>1</STATUS>
  <RSUM>16.98</RSUM>
@@ -14,33 +38,16 @@
  <ARTLISTE>
      <BESTELLUNG_TYP>
         <POSNR>1</POSNR>
-        <ARTNR>1</ARTNR>
-        <ARTBEZ>Stuhl</ARTBEZ>
-        <PREIS>11.0</PREIS>
-        <KUEHL>K</KUEHL>
-        <MGE>Karton</MGE>
-        <ANZBO>1</ANZBO>
-        <EDAT>2019.03.23</EDAT>
+        <ARTNR>1653</ARTNR>
      </BESTELLUNG_TYP>
      <BESTELLUNG_TYP>
         <POSNR>2</POSNR>
-        <ARTNR>2</ARTNR>
-        <ARTBEZ>Kissen</ARTBEZ>
-        <PREIS>5.98</PREIS>
-        <KUEHL>K</KUEHL>
-        <MGE>Karton</MGE>
-        <ANZBO>1</ANZBO>
-        <EDAT>2019.03.29</EDAT>
+        <ARTNR>1654</ARTNR>
      </BESTELLUNG_TYP>
      <BESTELLUNG_TYP>
         <POSNR>3</POSNR>
         <ARTNR>3</ARTNR>
-        <ARTBEZ>Tuete</ARTBEZ>
-        <PREIS>0.56</PREIS>
-        <KUEHL>NK</KUEHL>
-        <MGE>Paket</MGE>
-        <ANZBO>3</ANZBO>
-        <EDAT>2019.05.03</EDAT>
      </BESTELLUNG_TYP>
  </ARTLISTE>
+ </BESTELLUNG>
 </BESTELLAT>

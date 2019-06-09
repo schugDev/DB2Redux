@@ -23,6 +23,7 @@ public class MySchemaContentHandler implements ContentHandler {
     boolean artAnzBo = false;
     boolean artEdat = false;
     
+    String aktDtyp ="";
     String sArtNr;
     String sArtBez;
     String sArtPreis;
@@ -66,30 +67,37 @@ public class MySchemaContentHandler implements ContentHandler {
         //System.out.println("Beginning of element");
         if ("ARTNR".equals(qName)) {
             artNr = true;
+            aktDtyp = provider.getElementTypeInfo().getTypeName();
             //System.out.println(attributes.getValue("DT"));
         }
         if ("ARTBEZ".equals(qName)) {
             artBez = true;
+            aktDtyp = provider.getElementTypeInfo().getTypeName();
             //System.out.println(attributes.getValue("DT"));
         }
         if ("PREIS".equals(qName)) {
             artPreis = true;
+            aktDtyp = provider.getElementTypeInfo().getTypeName();
             //System.out.println(attributes.getValue("DT"));
         }
         if ("KUEHL".equals(qName)) {
             artKuehl = true;
+            aktDtyp = provider.getElementTypeInfo().getTypeName();
             //System.out.println(attributes.getValue("DT"));
         }
         if ("MGE".equals(qName)) {
             artMge = true;
+            aktDtyp = provider.getElementTypeInfo().getTypeName();
             //System.out.println(attributes.getValue("DT"));
         }
         if ("ANZBO".equals(qName)) {
             artAnzBo = true;
+            aktDtyp = provider.getElementTypeInfo().getTypeName();
             //System.out.println(attributes.getValue("DT"));
         }
         if ("EDAT".equals(qName)) {
             artEdat = true;
+            aktDtyp = provider.getElementTypeInfo().getTypeName();
             //System.out.println(attributes.getValue("DT"));
         }
 

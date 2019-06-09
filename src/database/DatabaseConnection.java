@@ -18,6 +18,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,6 +73,23 @@ public class DatabaseConnection {
         
         preparedStatement.executeUpdate();
         preparedStatement.close();
+    }
+    
+    public Artikel getArtikelByID(int artnr) throws SQLException{
+        Connection con = connect();
+        String sql = "SELECT * FROM TBLARTIKEL WHERE ARTNR = "+artnr;
+        ResultSet resultSet;
+        Statement stmt = con.createStatement();
+        resultSet = stmt.executeQuery(sql);
+        Artikel artikel =null;
+        if(resultSet.next()) {
+            
+            
+           artikel = new Artikel(-1, artnr, resultSet.getString("ARTBEZ"), resultSet.getDouble("PREIS"), resultSet.getString("KUEHL"), resultSet.getString("MGE"), resultSet.getString("ANZBO"), resultSet.getDate("EDAT"));
+        }
+       
+        stmt.close();
+        return artikel;
     }
 
     public void updateKundePrak1(String kNr, String kUsp, String kDtUsp, String kUwert) throws SQLException {
@@ -195,19 +213,19 @@ public class DatabaseConnection {
         SELECT B.* FROM BESTELLAT A,
 	TABLE (A.ARTLISTE) B;
         */
-        
-        
+        System.out.println("Bestellnummer eingeben: ");
+        int bstnr = new Scanner(System.in).nextInt();
         
         Connection con = connect();
         PreparedStatement stmt;
         ResultSet resultSet;
-        String SQL = "SELECT B.* FROM BESTELLAT A, TABLE (A.ARTLISTE) B";
+        String SQL = "SELECT B.* FROM BESTELLAT A, TABLE (A.ARTLISTE) B WHERE BSTNR ="+bstnr;
 
 
         stmt = con.prepareStatement(SQL);
         resultSet = stmt.executeQuery();
-        System.out.println("ARTLISTE");
-        System.out.println("----------------");
+        System.out.println("ARTLISTE der Bestellung Nr: "+bstnr);
+        System.out.println("---------------------------------------------------------");
         String r = new String();
         while (resultSet.next()) {
             r = "";

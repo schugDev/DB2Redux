@@ -7,35 +7,34 @@
          <xs:element name="BESTELLAT">
                <xs:complexType>
                      <xs:sequence>
-                           <xs:element name="BSTNR" type="xs:int"></xs:element>
-                           <xs:element name="KNR" type="xs:int"></xs:element>
-                           <xs:element name="STATUS" type="xs:int"></xs:element>
-                           <xs:element name="RSUM" type="xs:double"></xs:element>
-                           <xs:element name="BESTDAT" type="xs:string"></xs:element>
-                           <xs:element name="LIEFDAT" type="xs:string"></xs:element>
-                           <xs:element name="RECHDAT" type="xs:string"></xs:element>
-                           <xs:element name="ARTLISTE">
-                                 <xs:complexType>
-                                       <xs:sequence>
-                                             <xs:element name="BESTELLUNG_TYP" maxOccurs="unbounded">
+                         <xs:element name="BESTELLUNG" maxOccurs="unbounded">
+                             <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="BSTNR" type="xs:int"></xs:element>
+                                    <xs:element name="KNR" type="xs:int"></xs:element>
+                                    <xs:element name="STATUS" type="xs:int"></xs:element>
+                                    <xs:element name="RSUM" type="xs:double"></xs:element>
+                                    <xs:element name="BESTDAT" type="xs:string"></xs:element>
+                                    <xs:element name="LIEFDAT" type="xs:string"></xs:element>
+                                    <xs:element name="RECHDAT" type="xs:string"></xs:element>
+                                    <xs:element name="ARTLISTE">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="BESTELLUNG_TYP" maxOccurs="unbounded">
                                                    <xs:complexType>
                                                          <xs:sequence>
                                                                <xs:element name="POSNR" type="xs:int"></xs:element>
                                                                <xs:element name="ARTNR" type="xs:int"></xs:element>
-                                                               <xs:element name="ARTBEZ" type="xs:string"></xs:element>
-                                                               <xs:element name="PREIS" type="xs:double"></xs:element>
-                                                               <xs:element name="KUEHL" type="xs:string"></xs:element>
-                                                               <xs:element name="MGE" type="xs:string"></xs:element>
-                                                               <xs:element name="ANZBO" type="xs:int"></xs:element>
-                                                               <xs:element name="EDAT" type="xs:string"></xs:element>
                                                          </xs:sequence>
                                                    </xs:complexType>
-                                             </xs:element>
-                                       </xs:sequence>
-                                 </xs:complexType>
-                           </xs:element>
-                     </xs:sequence>
-
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
                </xs:complexType>
          </xs:element>
    </xs:schema>

@@ -5,7 +5,7 @@
         xsi:schemaLocation="https://www.w3schools.com ARTIKEL1.xsd">
     <ARTIKEL>
         <ARTNR>12345</ARTNR>
-        <ARTBEZ>Telefon</ARTBEZ>
+        <ARTBEZ>HTelefon</ARTBEZ>
         <PREIS>99.99</PREIS>
         <KUEHL>NK</KUEHL>
         <MGE>Karton</MGE>
@@ -15,13 +15,33 @@
 
         <ARTIKEL>
         <ARTNR>12345</ARTNR>
-        <ARTBEZ>Telefon</ARTBEZ>
+        <ARTBEZ>KTelefon</ARTBEZ>
         <PREIS>99.99</PREIS>
         <KUEHL>NK</KUEHL>
         <MGE>Karton</MGE>
         <ANZBO>25</ANZBO>
         <EDAT>30.03.2019</EDAT>
     </ARTIKEL>
+    <ARTIKEL>
+        <ARTNR>12345</ARTNR>
+        <ARTBEZ>LTelefon</ARTBEZ>
+        <PREIS>33.22</PREIS>
+        <KUEHL>NK</KUEHL>
+        <MGE>Karton</MGE>
+        <ANZBO>25</ANZBO>
+        <EDAT>30.03.2019</EDAT>
+    </ARTIKEL>
+
+        <ARTIKEL>
+        <ARTNR>12345</ARTNR>
+        <ARTBEZ>MTelefon</ARTBEZ>
+        <PREIS>99.99</PREIS>
+        <KUEHL>NK</KUEHL>
+        <MGE>Karton</MGE>
+        <ANZBO>25</ANZBO>
+        <EDAT>30.03.2019</EDAT>
+    </ARTIKEL>
+
 
 
 </TBLARTIKEL>

@@ -33,14 +33,9 @@ public class MySchemaContentHandlerNested implements ContentHandler {
     boolean BESTELLUNG_TYP = false;
     boolean POSNR = false;
     boolean ARTNR = false;
-    boolean ARTBEZ = false;
-    boolean PREIS = false;
-    boolean KUEHL = false;
-    boolean MGE = false;
-    boolean ANZBO = false;
-    boolean EDAT = false; 
+    boolean BESTELLUNG = false;
 
-    
+    int posnr=0;
     
     private final TypeInfoProvider provider;
 
@@ -65,12 +60,7 @@ public class MySchemaContentHandlerNested implements ContentHandler {
         eintragBestellAt.printList();
         
         //if we reach this point we have all information insert something in our database
-        DatabaseConnection con = new DatabaseConnection();
-        try {
-            con.insertIntoNestedTable(eintragBestellAt);
-        } catch (SQLException ex) {
-            Logger.getLogger(MySchemaContentHandlerNested.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
     }
 
@@ -115,33 +105,16 @@ public class MySchemaContentHandlerNested implements ContentHandler {
         if("BESTELLUNG_TYP".equals(qName)){
             BESTELLUNG_TYP = true;
         }
+        if("BESTELLUNG".equals(qName)){
+            eintragBestellAt = new BestellA();
+            BESTELLUNG = true;
+        }
         if("POSNR".equals(qName)){
             POSNR = true;
         }
         if("ARTNR".equals(qName)){
             ARTNR = true;
         }
-        if("ARTBEZ".equals(qName)){
-            ARTBEZ = true;
-        }
-        if("PREIS".equals(qName)){
-            PREIS = true;
-        }
-        if("KUEHL".equals(qName)){
-            KUEHL = true;
-        }
-        if("MGE".equals(qName)){
-            MGE = true;
-        }
-        if("ANZBO".equals(qName)){
-            ANZBO = true;
-        }
-        if("EDAT".equals(qName)){
-            EDAT = true;
-        }
-        
-
-
     }
 
     @Override
@@ -172,6 +145,15 @@ public class MySchemaContentHandlerNested implements ContentHandler {
         if("ARTLISTE".equals(qName)){
             ARTLISTE = false;
         }
+        if("BESTELLUNG".equals(qName)){
+            DatabaseConnection con = new DatabaseConnection();
+            try {
+                con.insertIntoNestedTable(eintragBestellAt);
+            } catch (SQLException ex) {
+                Logger.getLogger(MySchemaContentHandlerNested.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            BESTELLUNG = false;
+        }
         if("BESTELLUNG_TYP".equals(qName)){
             
             BESTELLUNG_TYP = false;
@@ -182,24 +164,7 @@ public class MySchemaContentHandlerNested implements ContentHandler {
         if("ARTNR".equals(qName)){
             ARTNR = false;
         }
-        if("ARTBEZ".equals(qName)){
-            ARTBEZ = false;
-        }
-        if("PREIS".equals(qName)){
-            PREIS = false;
-        }
-        if("KUEHL".equals(qName)){
-            KUEHL = false;
-        }
-        if("MGE".equals(qName)){
-            MGE = false;
-        }
-        if("ANZBO".equals(qName)){
-            ANZBO = false;
-        }
-        if("EDAT".equals(qName)){
-            EDAT = false;
-        }
+
         
         
 
@@ -208,6 +173,7 @@ public class MySchemaContentHandlerNested implements ContentHandler {
         @Override
     public void characters(char[] chars, int start, int length) throws SAXException {
         System.out.println(new String(chars, start, length));
+        DatabaseConnection con = new DatabaseConnection();
         
         if(BSTNR){
            eintragBestellAt.setBstNr(Integer.parseInt(new String(chars, start, length)));
@@ -271,59 +237,21 @@ public class MySchemaContentHandlerNested implements ContentHandler {
             
         }
         
-        if(ARTLISTE){
-            
-            
-
-        }
-        
         if(BESTELLUNG_TYP){
             
             if(POSNR){
-                //Creating a new Artikel if we reach the characters() function for POSNR. 
-                //This means POSNR must be the fist opening tag within the ARTLIST attribut.
-                this.art = new Artikel();
-                art.setPosNr(Integer.parseInt(new String(chars, start, length)));
+                posnr = Integer.parseInt(new String(chars, start, length));
             }
             if(ARTNR){
-                art.setArtNr(Integer.parseInt(new String(chars, start, length)));
-            }
-            if(ARTBEZ){
-                art.setArtBez(new String(chars, start, length));
-            }
-            if(PREIS){
-            art.setArtPreis(Double.parseDouble(new String(chars, start, length)));
-            }
-            if(KUEHL){
-                art.setArtKuehl(new String(chars, start, length));
-            }
-            if(MGE){
-                art.setArtMge(new String(chars, start, length));
-            }
-            if(ANZBO){
-                art.setArtAnzBo(new String(chars, start, length));
-            }
-            if(EDAT){
-            String eDat = new String(chars, start, length);
-            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy.MM.dd");
-            java.util.Date date;
-            try {
-                date = sdf1.parse(eDat);
-                java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-                art.setArtEdat(sqlDate);
-                System.out.println("tttttt"+sqlDate);
-
-            } catch (ParseException ex) {
-                Logger.getLogger(MySchemaContentHandlerNested.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            //add the artikel to the arrayList after we reached the EDAT tag (the last tag of a single article)
-            eintragBestellAt.artListe.add(art);
-            }
-            
-            
-        }
-        
-        
+                try {
+                    art = con.getArtikelByID(Integer.parseInt(new String(chars, start, length)));
+                    art.setPosNr(posnr);
+                    eintragBestellAt.artListe.add(art);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySchemaContentHandlerNested.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } 
+        } 
     }
 
     @Override

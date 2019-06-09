@@ -32,10 +32,12 @@ public class Praktikum {
             System.out.println("|  Praktikum 1                                                                 |");
             System.out.println("|  1. ARTIKEL.xml auf Wohlgeformtheit und Validitaet pruefen & INSERT in DB    |");
             System.out.println("|  2. UKUNDE.xml auf Wohlgeformtheit und Validitaet pruefen & UPDATE auf DB    |");
+            System.out.println("                                                                                ");
             System.out.println("|  Praktikum 2                                                                 |");
             System.out.println("|  3. Validiere ARTIKEL1.xml gegen XML Schema INSERT in DB                     |");
             System.out.println("|  4. Generiere INSERTS auf Nested Table                                       |");
             System.out.println("|  5. Zeige Inhalt der artListe an (Nested Table)                              |");
+            System.out.println("                                                                                ");
             System.out.println("|  Praktikum 3                                                                 |");
             System.out.println("|  6. Generiere CSV fuer Artikel                                               |");
             System.out.println("|  7. CouchDB Funktionen                                                       |");
